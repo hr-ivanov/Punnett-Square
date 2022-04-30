@@ -1,0 +1,6 @@
+C:\Users\Stan\Desktop\InformatikaZadachi\Hybrids\Hybrids\obj\Debug\Hybrids.csprojResolveAssemblyReference.cache
+C:\Users\Stan\Desktop\InformatikaZadachi\Hybrids\Hybrids\bin\Debug\Hybrids.exe.config
+C:\Users\Stan\Desktop\InformatikaZadachi\Hybrids\Hybrids\bin\Debug\Hybrids.exe
+C:\Users\Stan\Desktop\InformatikaZadachi\Hybrids\Hybrids\bin\Debug\Hybrids.pdb
+C:\Users\Stan\Desktop\InformatikaZadachi\Hybrids\Hybrids\obj\Debug\Hybrids.exe
+C:\Users\Stan\Desktop\InformatikaZadachi\Hybrids\Hybrids\obj\Debug\Hybrids.pdb
