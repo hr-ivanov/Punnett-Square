@@ -157,6 +157,7 @@ namespace PunnettSquareGenerator
                         flist.Add(f);
                         dg.Rows[i].Cells[j].Style.BackColor = c;
                     }
+                    contains=false;
                 }
             }
             foreach (Frequencies fr in flist)
