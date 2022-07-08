@@ -152,7 +152,7 @@ namespace PunnettSquareGenerator
                     }
                     if(contains==false)
                     {
-                        c = Color.FromArgb(r.Next(0, 256), r.Next(0, 256), r.Next(0, 256));
+                        c = Color.FromArgb(r.Next(0, 16)*16, r.Next(0, 16)*16, r.Next(0, 16)*16);
                         f = new Frequencies(variant, 1, 0, c);
                         flist.Add(f);
                         dg.Rows[i].Cells[j].Style.BackColor = c;
