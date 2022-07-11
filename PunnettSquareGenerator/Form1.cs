@@ -153,5 +153,10 @@ namespace PunnettSquareGenerator
             adData = textBoxEpi.Text;
             h.ShowFrequencies(h.GenerateFrequencies(dataGridView1, 5, adData, total), dataGridView2);
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

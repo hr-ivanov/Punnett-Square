@@ -59,6 +59,7 @@
             this.textBoxPolCum = new System.Windows.Forms.TextBox();
             this.radioButtonPolCum = new System.Windows.Forms.RadioButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxEpi = new System.Windows.Forms.TextBox();
             this.radioButtonEp = new System.Windows.Forms.RadioButton();
@@ -390,6 +391,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.radioButton1);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.textBoxEpi);
             this.tabPage4.Controls.Add(this.radioButtonEp);
@@ -400,6 +402,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(34, 91);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(114, 24);
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -421,6 +433,7 @@
             // radioButtonEp
             // 
             this.radioButtonEp.AutoSize = true;
+            this.radioButtonEp.Checked = true;
             this.radioButtonEp.Location = new System.Drawing.Point(26, 18);
             this.radioButtonEp.Name = "radioButtonEp";
             this.radioButtonEp.Size = new System.Drawing.Size(83, 24);
@@ -611,5 +624,6 @@
         private TextBox textBoxEpi;
         private RadioButton radioButtonEp;
         private Label label15;
+        private RadioButton radioButton1;
     }
 }

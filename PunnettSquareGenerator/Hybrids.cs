@@ -188,7 +188,20 @@ namespace PunnettSquareGenerator
         }
         private string FullDominance(string variant, string adData)
         {
-            return variant;
+            string gen="";
+            string[] alleles = adData.Split(',');
+            foreach (string a in alleles)
+            {
+                if (variant.IndexOf(a) > -1)
+                {
+                    gen += a+"_";
+                }
+                else
+                {
+                    gen += a.ToLower() + a.ToLower();
+                }
+            }
+            return gen;
         }
         private string IncompleteDominance(string variant, string adData)
         {
@@ -196,19 +209,86 @@ namespace PunnettSquareGenerator
         }
         private string Lethal(string variant, string adData)
         {
+            string gen;
+            string[] alleles = adData.Split(',');
+            for (int i = 0; i < alleles.Length; i++)
+            {
+                if (alleles[i].ToLower() == alleles[i])
+                    alleles[i] = alleles[i] + "" + alleles[i];
+            }
+            foreach (string a in alleles)
+            {
+                if (variant.IndexOf(a) > -1)
+                {
+                    gen = string.Join('/', alleles);
+                    gen += new String('_', variant.Length)+" - DEAD";
+                    variant = gen;
+                    return variant;
+                }
+            }
             return variant;
         }
         private string Complementary(string variant, string adData)
         {
+            string gen;
+            string[] alleles = adData.Split(',');
+            int counter = 0;
+            for (int i = 0; i < alleles.Length; i++)
+            {
+                if (alleles[i].ToLower() == alleles[i])
+                    alleles[i] = alleles[i] + "" + alleles[i];
+            }
+            foreach (string a in alleles)
+            {
+                if (variant.IndexOf(a) > -1)
+                {
+                    counter++;
+                }
+            }
+            if (counter == alleles.Length)
+                return string.Join('_', alleles)+"_";
+
             return variant;
         }
         private string Epistatic(string variant, string adData)
         {
+            string gen;
+            string[] alleles = adData.Split(',');
+            for (int i = 0; i < alleles.Length; i++)
+            {
+                if (alleles[i].ToLower() == alleles[i])
+                    alleles[i] = alleles[i] + "" + alleles[i];
+            }
+            foreach (string a in alleles)
+            {
+                if (variant.IndexOf(a) > -1)
+                {
+                    gen = string.Join('/', alleles);
+                    gen += new String('_', variant.Length);
+                    variant = gen;
+                    return variant;
+                }
+            }
             return variant;
         }
         private string PolygenicCumulative(string variant, string adData)
         {
-            return variant;
+            string[] alleles = adData.Split(',');
+            string gen;
+            int counter = 0;
+            foreach(string a in alleles)
+            {
+                if(a.ToLower() == a)
+                {
+                    gen = a + a;
+                }
+                else
+                {
+                    gen = a;
+                }
+                counter += System.Text.RegularExpressions.Regex.Matches(variant, gen).Count;
+            }
+            return String.Join('/', alleles) + " - " + counter;
         }
         private string PolygenicNonCumulative(string variant, string adData)
         {
@@ -224,7 +304,7 @@ namespace PunnettSquareGenerator
                 if (variant.IndexOf(a)>-1)
                 {
                     gen = string.Join('/', alleles);
-                    gen += new String('_', variant.Length - alleles.Length);
+                    gen += new String('_', variant.Length);
                     variant = gen;
                     return variant;
                 }
