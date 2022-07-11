@@ -118,7 +118,7 @@ namespace PunnettSquareGenerator
                 dg.Rows.Add(row);
             }
         }
-        public List<Frequencies> GenerateFrequencies(DataGridView dg, int relationship, string addData, double total)
+        public List<Frequencies> GenerateFrequencies(DataGridView dg, int relationship, string adData, double total)
         {
             List<Frequencies> flist = new List<Frequencies>();
             Random r = new Random();
@@ -136,6 +136,25 @@ namespace PunnettSquareGenerator
                         case 0:
                             break;
                         case 1:
+                            variant = FullDominance(variant, adData);
+                            break;
+                        case 2:
+                            variant = IncompleteDominance(variant, adData);
+                            break;
+                        case 3:
+                            variant = Lethal(variant, adData);
+                            break;
+                        case 4:
+                            variant = Complementary(variant, adData);
+                            break;
+                        case 5:
+                            variant = Epistatic(variant, adData);
+                            break;
+                        case 6:
+                            variant = PolygenicCumulative(variant, adData);
+                            break;
+                        case 7:
+                            variant = PolygenicNonCumulative(variant, adData);
                             break;
                         default:
                             break;
@@ -152,12 +171,12 @@ namespace PunnettSquareGenerator
                     }
                     if(contains==false)
                     {
-                        c = Color.FromArgb(r.Next(0, 16)*16, r.Next(0, 16)*16, r.Next(0, 16)*16);
+                        c = Color.FromArgb(r.Next(0, 16) * 16, r.Next(0, 16) * 16, r.Next(0, 16) * 16);
                         f = new Frequencies(variant, 1, 0, c);
                         flist.Add(f);
                         dg.Rows[i].Cells[j].Style.BackColor = c;
                     }
-                    contains=false;
+                    contains = false;
                 }
             }
             foreach (Frequencies fr in flist)
@@ -166,6 +185,51 @@ namespace PunnettSquareGenerator
             }
 
             return flist;
+        }
+        private string FullDominance(string variant, string adData)
+        {
+            return variant;
+        }
+        private string IncompleteDominance(string variant, string adData)
+        {
+            return variant;
+        }
+        private string Lethal(string variant, string adData)
+        {
+            return variant;
+        }
+        private string Complementary(string variant, string adData)
+        {
+            return variant;
+        }
+        private string Epistatic(string variant, string adData)
+        {
+            return variant;
+        }
+        private string PolygenicCumulative(string variant, string adData)
+        {
+            return variant;
+        }
+        private string PolygenicNonCumulative(string variant, string adData)
+        {
+            string gen;
+            string[] alleles = adData.Split(',');
+            for (int i = 0; i<alleles.Length; i++)
+            {
+                if (alleles[i].ToLower() == alleles[i])
+                    alleles[i] = alleles[i] + "" + alleles[i];
+            }
+            foreach (string a in alleles)
+            {
+                if (variant.IndexOf(a)>-1)
+                {
+                    gen = string.Join('/', alleles);
+                    gen += new String('_', variant.Length - alleles.Length);
+                    variant = gen;
+                    return variant;
+                }
+            }
+            return "NO KEY ALLELES";
         }
         public void ShowFrequencies(List<Frequencies> flist, DataGridView dg)
         {
@@ -181,8 +245,6 @@ namespace PunnettSquareGenerator
                 row.Cells[1].Value = flist[i].Number;
                 row.Cells[2].Value = flist[i].Percentage.ToString("f4")+"%";
                 row.DefaultCellStyle.BackColor = flist[i].Color;
-                //row.Cells[0].Style.BackColor = list[i].Color;
-
                 dg.Rows.Add(row);
             }
         }
